@@ -6,6 +6,7 @@ Widget displayCircularProgressIndicator(String textfordisplaying){
     child: Container(
       color: Colors.yellow,
       child: Column(
+        
         children: [
           Text(textfordisplaying),
           const CircularProgressIndicator(
@@ -31,10 +32,11 @@ ListView.builder(
   itemCount: commentsList.length,
   itemBuilder:(context, index) {
     return Container(
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       color: Colors.pink.shade100,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
         Text(commentsList[index].id.toString(),
         style:const TextStyle(color: Colors.blue,fontSize: 20)),
