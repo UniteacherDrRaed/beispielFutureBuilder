@@ -13,8 +13,21 @@ class FetchingComments{
     }
     else{
       throw Exception("failed to fetch all comments");
-    }
-
-    
+    } 
   }
+
+ static Future<bool> addComment(String name,String email, String body) async{
+  const String commentsLink="https://jsonplaceholder.typicode.com/comments";
+  final response=await http.post(Uri.parse(commentsLink),  headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'name': name,
+      'email': email,
+      'body': body,
+    }),
+  );
+  return (response.statusCode==201);
+
+ }
 }
