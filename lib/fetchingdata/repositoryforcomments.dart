@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:beispielfuturebuilder/Model/comment.dart';
+
 import 'package:http/http.dart' as http;
 class FetchingComments{
   
@@ -29,5 +30,23 @@ class FetchingComments{
   );
   return (response.statusCode==201);
 
+ }
+
+ static Future<bool> deleteComment(int id) async {
+
+ final response= await http.delete(Uri.parse("https://jsonplaceholder.typicode.com/comments/$id"),
+ headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  if (response.statusCode==200)
+  {
+     return true;
+  } else
+  {
+     throw Exception(" error");
+  }
+   
+    
  }
 }

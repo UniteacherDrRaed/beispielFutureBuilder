@@ -1,4 +1,5 @@
 import 'package:beispielfuturebuilder/Model/comment.dart';
+import 'package:beispielfuturebuilder/fetchingdata/repositoryforcomments.dart';
 import 'package:flutter/material.dart';
 
 Widget displayCircularProgressIndicator(String textfordisplaying){
@@ -43,6 +44,12 @@ ListView.builder(
         Text(commentsList[index].name),
         Text(commentsList[index].email),
         Text(commentsList[index].body),
+        IconButton(onPressed: (){
+          FetchingComments.deleteComment(index);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content:  Text("Comment deleted successfuly")));
+        }, 
+        icon: const  Icon(Icons.delete,color: Colors.red,))
       ]),
     );
   }
